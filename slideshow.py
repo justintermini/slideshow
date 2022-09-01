@@ -8,7 +8,7 @@ from PIL import ImageTk
 
 # adjust window
 # root=tk.Tk()
-root.geometry("200x200")
+# root.geometry("200x200")
 root.attributes('-fullscreen', True)
 
 # loading the images
