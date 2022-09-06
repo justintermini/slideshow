@@ -29,21 +29,21 @@ x = 1
 
 # function to change to next image
 def move():
-	global x
-	if x == 6:
-		x = 1
-	if x == 1:
-		l.config(image=img)
-	elif x == 2:
-		l.config(image=img2)
-	elif x == 3:
-		l.config(image=img3)
-    elif x == 4:
-        l.config(image=img4)
-    elif x == 5:
-        l.config(image=img5)
-	x = x+1
-	root.after(5000, move)
+  global x
+  if x == 6:
+    x = 1
+  if x == 1:
+    l.config(image=img)
+  elif x == 2:
+    l.config(image=img2)
+  elif x == 3:
+    l.config(image=img3)
+  elif x == 4:
+    l.config(image=img4)
+  elif x == 5:
+    l.config(image=img5)
+  x = x+1
+  root.after(5000, move)
 
 # calling the function
 move()
