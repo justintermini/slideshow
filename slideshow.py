@@ -1,5 +1,4 @@
 # import required modules
-import tkinter as tk
 from tkinter import *
 from PIL import Image
 from PIL import ImageTk
@@ -7,7 +6,7 @@ from PIL import ImageTk
 
 
 # adjust window
-# root=tk.Tk()
+root=Tk()
 # root.geometry("200x200")
 root.attributes('-fullscreen', True)
 
