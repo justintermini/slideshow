@@ -1,52 +1,60 @@
-# import required modules
-from tkinter import *
-from PIL import Image
-from PIL import ImageTk
+import tkinter as tk
+from PIL import Image, ImageTk
+import random
+import glob
 
+# NEED TO CREATE EXIT VIA KEYSTROKE
 
-
-# adjust window
-root=Tk()
-# root.geometry("200x200")
-root.attributes('-fullscreen', True)
-
-# loading the images
-img=ImageTk.PhotoImage(Image.open("CRmonitor.png"))
-img2=ImageTk.PhotoImage(Image.open("NYTmonitor.png"))
-img3=ImageTk.PhotoImage(Image.open("WAPOmonitor.png"))
-img4=ImageTk.PhotoImage(Image.open("GREATCOURSESmonitor.png"))
-img5=ImageTk.PhotoImage(Image.open("WSJmonitor.png"))
-
-
-l=Label()
-l.pack()
-
-
-
-# using recursion to slide to next image
-x = 1
-
-# function to change to next image
-def move():
-  global x
-  if x == 6:
-    x = 1
-  if x == 1:
-    l.config(image=img)
-  elif x == 2:
-    l.config(image=img2)
-  elif x == 3:
-    l.config(image=img3)
-  elif x == 4:
-    l.config(image=img4)
-  elif x == 5:
-    l.config(image=img5)
-  x = x+1
-  root.after(5000, move)
-
-# calling the function
-move()
-
-
-
+class gui:
+    def __init__(self, mainwin):
+        
+        self.counter = 0
+        self.mainwin = mainwin
+        self.frame = tk.Frame(mainwin)
+        self.img = tk.Label()
+        self.img.pack()
+        
+        self.pic()
+        
+    
+    
+    def pic(self):
+        
+        self.pic_list = []
+        
+        for name in glob.glob(r'C:\Users\jtermini\slideshow\imgs\*'):
+            val = name
+            self.pic_list.append(val)
+            
+        if self.counter == len(self.pic_list) - 1:
+            self.counter = 0
+            
+        else:
+            self.counter = self.counter + 1
+            
+        self.file = self.pic_list[self.counter]
+        self.load = Image.open(self.file)
+        
+        self.pic_width = self.load.size[0]
+        self.pic_height = self.load.size[1]
+        
+        self.real_aspect = self.pic_width/self.pic_height
+        
+        self.cal_width = int(self.real_aspect * 800)
+        
+        self.load2 = self.load.resize((self.cal_width, 800))
+        
+        self.render = ImageTk.PhotoImage(self.load2)
+        self.img.config(image = self.render)
+        self.img.image = self.render
+        root.after(3000, self.pic)
+        
+        
+        
+        
+            
+        
+root = tk.Tk()
+myprog = gui(root)
 root.mainloop()
+
