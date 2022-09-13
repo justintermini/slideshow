@@ -3,7 +3,6 @@ from PIL import Image, ImageTk
 import random
 import glob
 
-# NEED TO CREATE EXIT VIA KEYSTROKE
 
 class gui:
     def __init__(self, mainwin):
@@ -17,12 +16,12 @@ class gui:
         self.pic()
         
     
-    
     def pic(self):
         
         self.pic_list = []
-        
-        for name in glob.glob(r'C:\Users\jtermini\slideshow\imgs\*'):
+        path = r'C:\Users\jtermini\slideshow\imgs\*' # Set path to reflect folder where imgs live 
+
+        for name in glob.glob(path):
             val = name
             self.pic_list.append(val)
             
@@ -46,13 +45,9 @@ def close_escape(event=None):
     root.destroy()
         
         
-        
-        
-            
-        
 root = tk.Tk()
 root.attributes('-fullscreen', True) # Use fullscreen to remove bar at top of image
-root.bind("<Escape>", close_escape)
+root.bind("<Escape>", close_escape)  # Calls close_escape function to close program when wanted
 myprog = gui(root)
 root.mainloop()
 
