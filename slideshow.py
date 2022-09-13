@@ -35,19 +35,15 @@ class gui:
         self.file = self.pic_list[self.counter]
         self.load = Image.open(self.file)
         
-        self.pic_width = self.load.size[0]
-        self.pic_height = self.load.size[1]
-        
-        self.real_aspect = self.pic_width/self.pic_height
-        
-        self.cal_width = int(self.real_aspect * 800)
-        
-        self.load2 = self.load.resize((self.cal_width, 800))
-        
-        self.render = ImageTk.PhotoImage(self.load2)
+        self.render = ImageTk.PhotoImage(self.load)
         self.img.config(image = self.render)
+        
         self.img.image = self.render
         root.after(3000, self.pic)
+
+def close_escape(event=None):
+    print("escaped")
+    root.destroy()
         
         
         
@@ -55,6 +51,8 @@ class gui:
             
         
 root = tk.Tk()
+root.attributes('-fullscreen', True) # Use fullscreen to remove bar at top of image
+root.bind("<Escape>", close_escape)
 myprog = gui(root)
 root.mainloop()
 
