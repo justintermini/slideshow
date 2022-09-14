@@ -19,7 +19,7 @@ class gui:
     def pic(self):
         
         self.pic_list = []
-        path = r'C:\Users\jtermini\slideshow\imgs\*' # Set path to reflect folder where imgs live 
+        path = r'/home/odroid/slideshow/imgs/*' # Set path to reflect folder where imgs live 
 
         for name in glob.glob(path):
             val = name
