@@ -46,6 +46,7 @@ def close_escape(event=None):
         
         
 root = tk.Tk()
+root.config(cursor="none")
 root.attributes('-fullscreen', True) # Use fullscreen to remove bar at top of image
 root.bind("<Escape>", close_escape)  # Calls close_escape function to close program when wanted
 myprog = gui(root)
