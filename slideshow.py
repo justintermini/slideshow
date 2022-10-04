@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import tkinter as tk
 from PIL import Image, ImageTk
 import random
