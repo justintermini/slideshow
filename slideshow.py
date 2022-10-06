@@ -40,7 +40,7 @@ class gui:
         self.img.config(image = self.render)
         
         self.img.image = self.render
-        root.after(5000, self.pic)
+        root.after(6000, self.pic)
 
 def close_escape(event=None):
     print("escaped")
