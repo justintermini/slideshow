@@ -21,7 +21,7 @@ class gui:
     def pic(self):
         
         self.pic_list = []
-        path = r'/home/odroid/imgs/*' # Set path to reflect folder where imgs live 
+        path = r'/home/odroid/slideshow/imgs/*' # Set path to reflect folder where imgs live 
 
         for name in glob.glob(path):
             val = name
